@@ -74,9 +74,9 @@ function App() {
           <Route exact path="/tabs">
             <TabsTable list = {list}/>
           </Route>
-          <Route path="/song/">
-            <Song song = {song} chordsImg = {chordsImg}/>
-          </Route>
+          <Route path="/song/:id" render={(props) => (
+            <Song id={props.match.params.id} chordsImg = {chordsImg}/>
+          )} />
           <Route path="/create/">
             <Create chords={chords}/>
           </Route>
