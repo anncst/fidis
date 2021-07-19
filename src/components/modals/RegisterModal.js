@@ -4,7 +4,7 @@ import Modal from "./Modal"
 function RegisterModal(){
     return(
         <Modal>
-            <h1 className="text-3xl text-center mb-10">Login to <span className="text-primary">Fidis!</span></h1>
+            <h1 className="text-3xl text-center mb-10">Register to <span className="text-primary">fidis!</span></h1>
             <label className="mb-1" for="login">Login</label>
             <div className="border border-gray-300 rounded-lg mb-4">
                 <span className="m-2 text-gray-400">

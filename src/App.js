@@ -9,51 +9,9 @@ import Create from "./components/Create";
 import Footer from "./components/Footer";
 import ModalController from "./components/modals/ModalController";
 import ModalContextProvider from './contexts/ModalContext';
+import LoginBox from './components/LoginBox';
 
 function App() {
-  let list = [
-    {title: "Shameless", artist:"Camila Cabello", chords:["C","G","D"]},
-    {title: "Perfect Machine", artist:"Starset", chords:["C","G","D"]},
-    {title: "Come home", artist:"OneRepublic", chords:["C","G","D"]},
-    {title: "Lose you too", artist:"Shy Martin", chords:["C","Am","D"]},
-    {title: "Ghost", artist:"Ryan Caraveo", chords:["C","G","D"]}
-  ]
-  let song = {
-    title: "Shameless",
-    artist:"Camila Cabello",
-    chords:["C","G","D"],
-    text: `
-          Don't spe{C}ak, no, don't try
-          It's been a secret for the longest time
-          Don't run (oh), no, don't hide
-          Been running from it for the longest time
-          So many mornings{Am}, I woke up confused
-          In my dreams, I do anything I want to you
-          My emotions are naked, they're taking{D} me out of my mind
-          Right now, I'm shameless
-          Screamin' my lungs out for ya
-          Not afraid to face it
-          I need you more than I want to
-          Need you more {G}than I want to
-          Show me you're shameless
-          Write it on my neck, why don't ya?
-          And I won't erase it
-          I need you more than I want to
-          I need you more than I want to
-          No, uh, uh, don't wanna do this now
-          No, uh, uh, don't wanna do this now
-          No, uh, uh, don't wanna do this now
-          No, uh, uh, don't wanna do this now
-          So we're there, now it's real
-          Now that you have me, do you want me still?…`
-  }
-  let chordsImg = {
-    C: "cdur.svg",
-    G: "gdur.svg",
-    D: "dmol.svg"
-  }
-  let chords = ["C","G","D","E","Am"]
-
 
   return (
     <Router>
@@ -65,20 +23,20 @@ function App() {
             <div className="flex justify-evenly items-center">
               <HomeImg />
               <div className="m-1">
-                {/* <MusicBox title = "Shameless" artist = "Camila Cabello"/> */}
-                <RecentlyPlayed list = {list}/>
+                <RecentlyPlayed />
+                <LoginBox />
               </div>
             </div>
             <h2 className="text-4xl">Find chords of your fav song, take guitar and play!</h2>
           </Route>
           <Route exact path="/tabs">
-            <TabsTable list = {list}/>
+            <TabsTable />
           </Route>
           <Route path="/song/:id" render={(props) => (
-            <Song id={props.match.params.id} chordsImg = {chordsImg}/>
+            <Song id={props.match.params.id} />
           )} />
           <Route path="/create/">
-            <Create chords={chords}/>
+            <Create />
           </Route>
         </div>
         <ModalController />
