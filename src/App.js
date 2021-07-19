@@ -58,7 +58,7 @@ function App() {
   return (
     <Router>
     <ModalContextProvider>
-        <div className="App max-w-screen-2xl mx-auto m-10 min-h-screen">
+        <div className="App max-w-screen-2xl mx-auto m-10 min-h-screen p-4">
           <Navbar />
           <Route exact path="/">
             <h1 className="text-5xl mt-10">Welcome to <span className="text-primary">fidis!</span></h1>

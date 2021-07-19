@@ -19,11 +19,11 @@ class Song extends React.Component{
     render(){
         if(!this.state.song) return null;
 
-        // let chords = this.state.song.chords.map(chord => {
-        //     return(
-        //         <li><img src={"/img/" + this.props.chordsImg[chord]} className="h-36 mr-10" /></li>
-        //     )
-        // })
+        let chords = this.state.song.chords.map(chord => {
+            return(
+                <li><img src={"/img/" + chord.img} className="h-36 mr-10" /></li>
+            )
+        })
         return(
             <div>
                 <div className="relative">
@@ -37,9 +37,9 @@ class Song extends React.Component{
                 <div className="flex mt-20">
                     <div>
                         <div className="text-4xl text-left">Chords</div>
-                        {/* <ul className="flex"> 
+                        <ul className="flex"> 
                             {chords}
-                        </ul> */}
+                        </ul>
                     </div>
                     <div className="text-4xl text-left ml-10">
                         Strumming

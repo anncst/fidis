@@ -16,18 +16,18 @@ class TabsTable extends React.Component{
 
     render(){
         let tabsList = this.state.songs.map(song => {
-            // let chordsList = song.chords.map(chord => {
-            //     return(
-            //         <span className="border-r border-gray-200 last:border-0 px-2">
-            //             {chord}
-            //         </span>
-            //     )
-            // })
+            let chordsList = song.chords.map(chord => {
+                return(
+                    <span className="border-r border-gray-200 last:border-0 px-2">
+                        {chord.symbol}
+                    </span>
+                )
+            })
             return(
                 <tr className="border-b border-gray-200">
                     <td><a href={"/song/" + song._id}>{song.title}</a></td>
                     <td><a href="#">{song.author}</a></td>
-                    {/* <td className="text-left">{chordsList}</td> */}
+                    <td className="text-left">{chordsList}</td>
                 </tr>
             )
         })

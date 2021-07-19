@@ -27,7 +27,7 @@ class Create extends React.Component {
         let chordList = this.chords.map(chord => {
             return(
                 <label className="mx-2">
-                    <input type="checkbox" id={chord} className="hidden" onChange={this.chosenOption.bind(this,chord)}/>
+                    <input type="checkbox" id={chord} className="hidden" onChange={this.chosenOption.bind(this.chord)}/>
                     <div className="shadow-lg text-white text-xl font-bold rounded-full h-12 w-12 bg-primary flex items-center justify-center label-checked:bg-secondary">{chord}</div>
                 </label>
             )
