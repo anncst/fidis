@@ -10,6 +10,7 @@ import Footer from "./components/Footer";
 import ModalController from "./components/modals/ModalController";
 import ModalContextProvider from './contexts/ModalContext';
 import LoginBox from './components/LoginBox';
+import MyTabs from './components/MyTabs';
 
 function App() {
 
@@ -28,6 +29,9 @@ function App() {
               </div>
             </div>
             <h2 className="text-4xl">Find chords of your fav song, take guitar and play!</h2>
+          </Route>
+          <Route exact path="/mytabs">
+            <MyTabs />
           </Route>
           <Route exact path="/tabs">
             <TabsTable />
