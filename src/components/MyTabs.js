@@ -26,7 +26,7 @@ class MyTabs extends React.Component{
             })
             return(
                 <tr className="border-b border-gray-200">
-                    <td><a href={"/song/" + song._id}>{song.title}</a></td>
+                    <td><a href={"/song/" + song.id}>{song.title}</a></td>
                     <td><a href="#">{song.author}</a></td>
                     <td className="text-left">{chordsList}</td>
                 </tr>

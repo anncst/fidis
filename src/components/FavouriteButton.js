@@ -1,25 +1,24 @@
 import React from "react";
+import axios from 'axios'
 
 class FavouriteButton extends React.Component{
-    constructor(props) {
-        super(props);
-        this.state = {liked: false};
+    state = {
+        liked: this.props.liked
     }
 
-    componentDidMount() {
-        // sprawdzić czy jest polubiona, 
-    }
 
     handleClick = () => {
+
         this.setState(state => ({
             liked: !state.liked
         }));
 
-        // if (true) {
-        //     // zapisać polubienie
-        // } else {
-        //     // usunąć polubienie
-        // }
+        if (!this.state.liked) {
+            axios.put(`/song/${this.props.songId}/liked`)// zapisać polubienie
+        } else {
+            axios.delete(`/song/${this.props.songId}/liked`)
+            // usunąć polubienie
+        }
     }
 
     render(){
