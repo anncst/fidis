@@ -1,7 +1,11 @@
 import {Formik} from 'formik';
 import axios from 'axios';
+import {useContext} from 'react'
+import {ModalContext} from '../../contexts/ModalContext'
  
-function LoginForm() {
+function LoginForm({reloadProfile}) {
+    const {closeAllModals} = useContext(ModalContext);
+
     return(
         <Formik
             initialValues={{
@@ -11,28 +15,29 @@ function LoginForm() {
             onSubmit={(values) => {
                 axios.post('/auth/login', values)
                 .then(res => {
-                    console.log(res)
+                    reloadProfile();
+                    closeAllModals();
                 })
             }}
         >
             {
                 ({values, handleChange, handleSubmit}) => (
-                <form className="flex flex-col" onSubmit={handleSubmit}>
-                    <label className="mb-1" for="login">Username</label>
-                    <div className="border border-gray-300 rounded-lg mb-4">
-                        <span className="m-2 text-gray-400">
-                            <i className="fas fa-user"></i>
+                <form className="flex flex-col items-start" onSubmit={handleSubmit}>
+                    <label className="mb-1 px-2" for="login">Username</label>
+                    <div className="border border-gray-300 rounded-lg mb-4 w-full flex">
+                        <span className="text-gray-400">
+                            <i className="fas fa-user self-center m-3"></i>
                         </span>
-                        <input placeholder="Username" type="text" id="username" className="p-1" onChange={handleChange} value={values.username}/>
+                        <input placeholder="Username" type="text" id="username" className="p-1 w-full" onChange={handleChange} value={values.username}/>
                     </div>
-                    <label className="mb-1" for="password">Password</label>
-                    <div className="border border-gray-300 rounded-lg mb-8">
-                        <span className="m-2 text-gray-400">
-                            <i className="fas fa-key"></i>
+                    <label className="mb-1 px-2" for="password">Password</label>
+                    <div className="border border-gray-300 rounded-lg mb-8 w-full flex">
+                        <span className="text-gray-400">
+                            <i className="fas fa-key self-center m-3"></i>
                         </span>
-                    <input placeholder="Password" type="password" id="password" className="p-1" onChange={handleChange} value={values.password}/>
+                    <input placeholder="Password" type="password" id="password" className="p-1 w-full" onChange={handleChange} value={values.password}/>
                     </div>
-                    <button className="bg-primary rounded-lg text-white py-2 px-4" type="submit">Login</button>
+                    <button className="bg-primary rounded-lg text-white py-2 px-4 w-full" type="submit">Login</button>
                 </form>
                 )
             }

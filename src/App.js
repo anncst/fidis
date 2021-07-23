@@ -21,6 +21,10 @@ class App extends React.Component{
   }
 
   componentDidMount() {
+    this.reloadProfile();
+  }
+
+  reloadProfile = () => {
     axios.get('/profile/')
     .then(res => {
       this.setState({profile: res.data})
@@ -33,14 +37,12 @@ class App extends React.Component{
       <Router>
       <ModalContextProvider>
           <div className="App max-w-screen-2xl mx-auto m-10 min-h-screen p-4">
-            <Navbar profile= {this.state.profile}/>
+            <Navbar profile= {this.state.profile} />
             <Route exact path="/">
               <h1 className="text-5xl mt-10">Welcome to <span className="text-primary">fidis!</span></h1>
               <div className="flex justify-evenly items-center">
                 <HomeImg />
-                <div className="m-1">
-                  {!this.state.profile ? <LoginBox /> : <RecentlyPlayed />} 
-                </div>
+                {!this.state.profile ? <LoginBox reloadProfile = {this.reloadProfile}/> : <RecentlyPlayed />} 
               </div>
               <h2 className="text-4xl">Find chords of your fav song, take guitar and play!</h2>
             </Route>
@@ -57,7 +59,7 @@ class App extends React.Component{
               <Create />
             </Route>
           </div>
-          <ModalController />
+          <ModalController reloadProfile = {this.reloadProfile}/>
           <Footer />
         </ModalContextProvider>
       </Router>

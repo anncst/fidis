@@ -17,6 +17,13 @@ class Account extends React.Component{
         this.setState({showMenu: false});
     }
 
+    logout = () => {
+        axios.get('/auth/logout')
+        .then(() => {
+            window.location.reload();
+        })
+    }
+
     render(){
         return(
             <div className="ml-10 relative" onBlur={this.hide}>
@@ -31,12 +38,7 @@ class Account extends React.Component{
                         <ModalContext.Consumer>{({openModal}) => {
                             return this.props.profile ? (
                                 <ul> 
-                                    <li className="py-1 px-8 hover:bg-gray-100 rounded-lg"><button onMouseDown={() => {
-                                        axios.get('/auth/logout')
-                                        .then(() => {
-                                            window.location.reload();
-                                        })
-                                    }}>Logout</button></li>
+                                    <li className="py-1 px-8 hover:bg-gray-100 rounded-lg"><button onMouseDown={this.logout}>Logout</button></li>
                                 </ul> 
                             ) : (
                                 <ul>
