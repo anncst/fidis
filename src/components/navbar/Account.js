@@ -34,16 +34,17 @@ class Account extends React.Component{
                     <i className="fas fa-caret-down fa-lg mx-1 text-gray-500"></i>
                 </button>
                 {this.state.showMenu &&
-                    <div className="absolute mt-1 right-0 bg-white p-2 rounded-lg text-xl">
+                    <div className="absolute mt-1 right-0 bg-white p-2 rounded-lg text-xl w-full">
                         <ModalContext.Consumer>{({openModal}) => {
                             return this.props.profile ? (
                                 <ul> 
-                                    <li className="py-1 px-8 hover:bg-gray-100 rounded-lg"><button onMouseDown={this.logout}>Logout</button></li>
+                                    <li><button className="py-2 px-4 hover:bg-gray-100 rounded-lg w-full" onMouseDown={this.logout}>My profile</button></li>
+                                    <li><button className="py-2 px-4 hover:bg-gray-100 rounded-lg w-full" onMouseDown={this.logout}>Logout</button></li>
                                 </ul> 
                             ) : (
                                 <ul>
-                                    <li><button className="py-1 px-8 hover:bg-gray-100 rounded-lg w-full" onMouseDown={() => {openModal("LOGIN")}}>Login</button></li>
-                                    <li><button className="py-1 px-8 hover:bg-gray-100 rounded-lg w-full" onMouseDown={() => {openModal("REGISTER")}}>Register</button></li>
+                                    <li><button className="py-2 px-4 hover:bg-gray-100 rounded-lg w-full" onMouseDown={() => {openModal("LOGIN")}}>Login</button></li>
+                                    <li><button className="py-2 px-4 hover:bg-gray-100 rounded-lg w-full" onMouseDown={() => {openModal("REGISTER")}}>Register</button></li>
                                 </ul>
                             )
                         }}
