@@ -53,7 +53,7 @@ class App extends React.Component{
               <TabsTable />
             </Route>
             <Route path="/song/:id" render={(props) => (
-              <Song id={props.match.params.id} />
+              <Song id={props.match.params.id} profile={this.state.profile} />
             )} />
             <Route path="/create/">
               <Create />

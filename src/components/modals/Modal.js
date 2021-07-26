@@ -4,7 +4,7 @@ import { ModalContext } from "../../contexts/ModalContext";
 function Modal(props){
     const {closeAllModals} = useContext(ModalContext);
     return(
-        <div className="fixed z-10 inset-0 overflow-y-auto ">
+        <div className="fixed z-40 inset-0 overflow-y-auto ">
             <div className="items-end justify-center min-h-screen text-center">
                 <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" onClick={() => closeAllModals()}></div>
                 

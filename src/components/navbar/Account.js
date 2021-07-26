@@ -34,7 +34,7 @@ class Account extends React.Component{
                     <i className="fas fa-caret-down fa-lg mx-1 text-gray-500"></i>
                 </button>
                 {this.state.showMenu &&
-                    <div className="absolute mt-1 right-0 bg-white p-2 rounded-lg text-xl w-full">
+                    <div className="absolute mt-1 right-0 bg-white p-2 rounded-lg text-xl w-full z-30">
                         <ModalContext.Consumer>{({openModal}) => {
                             return this.props.profile ? (
                                 <ul> 
