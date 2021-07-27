@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-
+import {NavLink} from 'react-router-dom';
 
 class MyTabs extends React.Component{
 
@@ -26,7 +26,7 @@ class MyTabs extends React.Component{
             })
             return(
                 <tr className="border-b border-gray-200">
-                    <td><a href={"/song/" + song.id}>{song.title}</a></td>
+                    <td><NavLink to={"/song/" + song.id}>{song.title}</NavLink></td>
                     <td><a href="#">{song.author}</a></td>
                     <td className="text-left">{chordsList}</td>
                 </tr>

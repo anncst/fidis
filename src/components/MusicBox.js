@@ -1,10 +1,11 @@
+import {NavLink} from 'react-router-dom';
 
 function MusicBox(props) {
     return (
         <div className="shadow-lg p-2 rounded-md font-bold bg-white m-4 text-2xl">
-            <a href={"/song/" + props.id}>
+            <NavLink to={"/song/" + props.id}>
                 {props.title} - {props.artist}
-            </a>
+            </NavLink>
         </div>
     )
 }
