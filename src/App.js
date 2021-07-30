@@ -13,6 +13,7 @@ import LoginBox from './components/LoginBox';
 import MyTabs from './components/MyTabs';
 import React from 'react';
 import axios from 'axios';
+import AuthorPage from './components/AuthorPage';
 
 class App extends React.Component{
 
@@ -54,6 +55,9 @@ class App extends React.Component{
             </Route>
             <Route path="/song/:id" render={(props) => (
               <Song id={props.match.params.id} profile={this.state.profile} />
+            )} />
+            <Route path="/author/:name" render={(props) => (
+              <AuthorPage name={props.match.params.name}/>
             )} />
             <Route path="/create/">
               <Create />

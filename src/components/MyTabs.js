@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import {NavLink} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 class MyTabs extends React.Component{
 
@@ -14,8 +14,9 @@ class MyTabs extends React.Component{
             this.setState({songs: res.data})
         })
     }
-
+   
     render(){
+
         let tabsList = this.state.songs.map(song => {
             let chordsList = song.chords.map(chord => {
                 return(
@@ -26,13 +27,18 @@ class MyTabs extends React.Component{
             })
             return(
                 <tr className="border-b border-gray-200">
-                    <td><NavLink to={"/song/" + song.id}>{song.title}</NavLink></td>
-                    <td><a href="#">{song.author}</a></td>
+                    <td><Link to={"/song/" + song.id}>{song.title}</Link></td>
+                    <td><Link to={"/author/" + song.author}>{song.author}</Link></td>
                     <td className="text-left">{chordsList}</td>
                 </tr>
             )
         })
-        return(
+        return !this.state.songs.length ? (
+            <div className="flex items-center flex-col">
+                <span className="text-3xl py-8">No added songs yet</span> 
+                
+            </div>
+        ) : (
             <table className="bg-white w-3/4 mx-auto text-2xl">
                 <thead>
                     <tr className="bg-primary text-white ">

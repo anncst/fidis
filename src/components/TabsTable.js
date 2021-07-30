@@ -1,6 +1,6 @@
 import React from "react";
 import axios from 'axios';
-import {NavLink} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 
 class TabsTable extends React.Component{
     state = {
@@ -10,7 +10,6 @@ class TabsTable extends React.Component{
     componentDidMount(){
         axios.get('/songs')
         .then(res =>{
-            console.log(res)
             this.setState({songs: res.data}) 
         })
     }
@@ -27,9 +26,9 @@ class TabsTable extends React.Component{
             return(
                 <tr className="border-b border-gray-200">
                     <td> 
-                        <NavLink to={"/song/" + song._id}>{song.title}</NavLink>
+                        <Link to={"/song/" + song.id}>{song.title}</Link>
                     </td>
-                    <td><a href="#">{song.author}</a></td>
+                    <td><Link to={"/author/" + song.author}>{song.author}</Link></td>
                     <td className="text-left">{chordsList}</td>
                 </tr>
             )
