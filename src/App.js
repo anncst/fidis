@@ -14,6 +14,7 @@ import MyTabs from './components/MyTabs';
 import React from 'react';
 import axios from 'axios';
 import AuthorPage from './components/AuthorPage';
+import SearchPage from './components/SearchPage'
 
 class App extends React.Component{
 
@@ -62,6 +63,9 @@ class App extends React.Component{
             <Route path="/create/">
               <Create />
             </Route>
+            <Route path="/search" render={(props) => (
+              <SearchPage location={props.location}/>
+            )} />
           </div>
           <ModalController reloadProfile = {this.reloadProfile}/>
           <Footer />

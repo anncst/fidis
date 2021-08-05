@@ -1,22 +1,22 @@
 import React from 'react';
 import axios from 'axios';
-import {Link} from 'react-router-dom';
+import {Link} from 'react-router-dom'
 
-class MyTabs extends React.Component{
-
+class SearchPage extends React.Component {
     state = {
-        songs:[]
+        songs: []
     }
 
     componentDidMount() {
-        axios.get('/songs/favourite')
+        const query = new URLSearchParams(this.props.location.search);
+        const q = query.get('q')
+        axios.get('/search?q=' + q)
         .then(res => {
-            this.setState({songs: res.data})
+            this.setState({songs:res.data})
         })
-    }
-   
-    render(){
 
+    }
+    render() {
         let tabsList = this.state.songs.map(song => {
             let chordsList = song.chords.map(chord => {
                 return(
@@ -27,18 +27,15 @@ class MyTabs extends React.Component{
             })
             return(
                 <tr className="border-b border-gray-200">
-                    <td><Link to={"/song/" + song.id}>{song.title}</Link></td>
+                    <td> 
+                        <Link to={"/song/" + song.id}>{song.title}</Link>
+                    </td>
                     <td><Link to={"/author/" + song.author}>{song.author}</Link></td>
                     <td className="text-left">{chordsList}</td>
                 </tr>
             )
         })
-        return !this.state.songs.length ? (
-            <div className="flex items-center flex-col py-6">
-                <img src="/img/empty-box.svg" className="w-1/4 h-1/4 py-6" />
-                <span className="text-3xl">No added songs yet</span> 
-            </div>
-        ) : (
+        return(
             <table className="bg-white w-3/4 mx-auto text-2xl">
                 <thead>
                     <tr className="bg-primary text-white ">
@@ -55,4 +52,4 @@ class MyTabs extends React.Component{
     }
 }
 
-export default MyTabs;
+export default SearchPage;

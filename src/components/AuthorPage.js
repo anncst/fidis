@@ -40,7 +40,12 @@ class AuthorPage extends React.Component {
         })
         return(
             <div>
-                <div className="text-4xl py-2 px-4">{this.state.author.name}</div>
+                <span className="flex flex-row items-center py-2 px-4 rounded-lg"> 
+                    {!this.state.author.image ? null : 
+                        <img src={this.state.author.image.url} className="rounded-full"/>
+                    }
+                    <div className="text-4xl py-2 px-4">{this.state.author.name}</div>
+                </span>
                 <table className="bg-white w-3/4 mx-auto text-2xl">
                     <thead>
                         <tr className="bg-primary text-white ">
