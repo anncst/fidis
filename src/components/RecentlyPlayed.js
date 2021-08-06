@@ -18,7 +18,7 @@ class RecentlyPlayed extends React.Component{
         if (!this.state.songs.length) return null;
         let musicBoxes = this.state.songs.map(song => {
             return(
-                <MusicBox title = {song.title} artist = {song.author} id = {song.id}/>
+                <MusicBox title = {song.title} artist = {song.author.name} id = {song.id}/>
             )
         });
         return(

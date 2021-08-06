@@ -28,7 +28,7 @@ class Song extends React.Component{
             <div>
                 <div className="relative">
                     <h2 className="text-6xl font-bold mt-12">{this.state.song.title}</h2>
-                    <h3 className="text-xl">By {this.state.song.author}</h3>
+                    <h3 className="text-xl">By {this.state.song.author.name}</h3>
                     <div className="absolute top-0 right-0">
                         <FavouriteButton liked = {this.state.song.liked} songId = {this.props.id} profile = {this.props.profile}/>
                     </div>

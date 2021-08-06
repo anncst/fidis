@@ -1,6 +1,6 @@
 import React from "react";
 import axios from 'axios';
-import {Link} from 'react-router-dom';
+import TabsTable from './TabsTable';
 
 class AuthorPage extends React.Component {
 
@@ -19,47 +19,18 @@ class AuthorPage extends React.Component {
         if (!this.state.author) {
             return null;
         }
-
-        let tabsList = this.state.author.songs.map(song => {
-            let chordsList = song.chords.map(chord => {
-                return(
-                    <span className="border-r border-gray-200 last:border-0 px-2">
-                        {chord.symbol}
-                    </span>
-                )
-            })
-            return(
-                <tr className="border-b border-gray-200">
-                    <td> 
-                        <Link to={"/song/" + song.id}>{song.title}</Link>
-                    </td>
-                    <td><Link to={"/author/" + song.author.name}>{song.author.name}</Link></td>
-                    <td className="text-left">{chordsList}</td>
-                </tr>
-            )
-        })
         return(
             <div>
                 <span className="flex flex-row items-center py-2 px-4 rounded-lg"> 
-                    {!this.state.author.image ? null : 
-                        <img src={this.state.author.image.url} className="rounded-full"/>
-                    }
-                    <div className="text-4xl py-2 px-4">{this.state.author.name}</div>
-                </span>
-                <table className="bg-white w-3/4 mx-auto text-2xl">
-                    <thead>
-                        <tr className="bg-primary text-white ">
-                            <th>Title</th>
-                            <th>Artist</th>
-                            <th className="text-left px-2">Chords</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {tabsList}
-                    </tbody>
-                </table>
+                        {!this.state.author.image ? null : 
+                            <img src={this.state.author.image.url} className="rounded-full"/>
+                        }
+                        <div className="text-4xl py-2 px-4">{this.state.author.name}</div>
+                    </span>
+                <TabsTable songs = {this.state.author.songs} />
             </div>
         )
+        
     }
 }
 

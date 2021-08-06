@@ -3,7 +3,7 @@ import RecentlyPlayed from './components/RecentlyPlayed';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import Navbar from "./components/Navbar";
 import HomeImg from "./components/HomeImg";
-import TabsTable from "./components/TabsTable";
+import Tabs from "./components/Tabs";
 import Song from "./components/Song";
 import Create from "./components/Create";
 import Footer from "./components/Footer";
@@ -52,7 +52,7 @@ class App extends React.Component{
               <MyTabs />
             </Route>
             <Route exact path="/tabs">
-              <TabsTable />
+              <Tabs />
             </Route>
             <Route path="/song/:id" render={(props) => (
               <Song id={props.match.params.id} profile={this.state.profile} />
