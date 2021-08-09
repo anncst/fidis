@@ -9,7 +9,7 @@ function Navbar({profile}){
             <Link to="/"><img src="/img/guitar.svg" alt="logo" className="h-14"/></Link>
             <Cards />
             <Search />
-            <Account profile={profile}/>
+            <Account />
         </nav>
         )
 }

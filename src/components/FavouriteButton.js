@@ -1,27 +1,19 @@
 import React from "react";
 import axios from 'axios';
-import { ModalContext } from '../contexts/ModalContext';
+import { ProfileAndModalContext } from '../contexts/ProfileAndModalContext';
+
+//add ProfileContext
 
 class FavouriteButton extends React.Component{
 
-    static contextType = ModalContext;
+    static contextType = ProfileAndModalContext;
 
     state = {
         liked: this.props.liked,
-        loggedIn: false
-    }
-
-    componentDidMount(){
-        console.log(this.props.profile)
-        if(this.props.profile) {
-            this.setState({
-                loggedIn: true
-            })
-        }
     }
 
     handleClick = () => {
-        if(this.state.loggedIn){
+        if(this.context.profileContext.profile){
             this.setState(state => ({
                 liked: !state.liked
             }));
@@ -33,7 +25,7 @@ class FavouriteButton extends React.Component{
                 // usunąć polubienie
             }
         } else{
-            this.context.openModal("LOGIN")
+            this.context.modalContext.openModal("LOGIN")
         }
     }
         

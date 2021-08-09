@@ -3,10 +3,12 @@ import {Formik , ErrorMessage} from 'formik'
 import axios from 'axios'
 import {useContext} from 'react'
 import {ModalContext} from '../../contexts/ModalContext'
+import { ProfileContext } from '../../contexts/ProfileContext';
 
-function RegisterForm ({reloadProfile}) {
+
+function RegisterForm () {
     const {closeAllModals} = useContext(ModalContext);
-
+    const {reloadProfile} = useContext(ProfileContext);
     return( 
         <Formik
             initialValues={{ 
@@ -66,7 +68,7 @@ function RegisterForm ({reloadProfile}) {
                         </span>
                         <input placeholder="Password" type="password" id="confirmPassword" className="p-1" value={values.confirmPassword} onChange={handleChange}/>
                         <div className="flex justify-center bg-red-200">
-                            <ErrorMessage name="confirmPassword" component="div" className="text-red-500 text-xs text-lg"/>
+                            <ErrorMessage name="confirmPassword" component="div" className="text-red-500 text-lg"/>
                         </div>
                         
                     </div>

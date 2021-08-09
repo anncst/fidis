@@ -1,10 +1,12 @@
 import {Formik} from 'formik';
 import axios from 'axios';
-import {useContext} from 'react'
-import {ModalContext} from '../../contexts/ModalContext'
- 
-function LoginForm({reloadProfile}) {
+import {useContext} from 'react';
+import {ModalContext} from '../../contexts/ModalContext';
+import {ProfileContext} from '../../contexts/ProfileContext';
+
+function LoginForm() {
     const {closeAllModals} = useContext(ModalContext);
+    const {reloadProfile} = useContext(ProfileContext);
 
     return(
         <Formik

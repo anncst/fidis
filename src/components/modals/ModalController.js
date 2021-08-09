@@ -4,13 +4,13 @@ import {ModalContext} from "../../contexts/ModalContext";
 import RegisterModal from "./RegisterModal";
 
 
-const ModalController = ({reloadProfile}) => {
+const ModalController = () => {
     const {isLoginOpen, isRegisterOpen} = useContext(ModalContext);
     
     return(
         <div>
-            {isLoginOpen ? <LoginModal reloadProfile = {reloadProfile} /> : null}
-            {isRegisterOpen ? <RegisterModal reloadProfile = {reloadProfile}/> : null}
+            {isLoginOpen ? <LoginModal /> : null}
+            {isRegisterOpen ? <RegisterModal /> : null}
         </div>
     )
 }
