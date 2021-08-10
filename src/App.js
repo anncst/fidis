@@ -15,7 +15,8 @@ import React from 'react';
 import AuthorPage from './components/AuthorPage';
 import SearchPage from './components/SearchPage';
 import ProfileContextProvider from './contexts/ProfileContext';
-import ProfileAndModalContextProvider from './contexts/ProfileAndModalContext'
+import ProfileAndModalContextProvider from './contexts/ProfileAndModalContext';
+import MyProfile from './components/MyProfile';
 
 class App extends React.Component{
 
@@ -48,6 +49,9 @@ class App extends React.Component{
                 <Route path="/author/:name" render={(props) => (
                   <AuthorPage name={props.match.params.name}/>
                 )} />
+                <Route path="/profile/" >
+                  <MyProfile />
+                </Route>
                 <Route path="/create/">
                   <Create />
                 </Route>

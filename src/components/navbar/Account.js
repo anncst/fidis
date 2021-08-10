@@ -2,9 +2,7 @@ import axios from 'axios';
 import React from 'react';
 import { ModalContext } from '../../contexts/ModalContext';
 import { ProfileContext } from '../../contexts/ProfileContext';
-
-
-//add profileContext
+import {Link} from 'react-router-dom';
 
 class Account extends React.Component{
 
@@ -17,8 +15,10 @@ class Account extends React.Component{
         this.setState({showMenu: !this.state.showMenu});
     }
 
-    hide = () => {
-        this.setState({showMenu: false});
+    hide = (e) => {
+        if(this.dropdownMenu && !this.dropdownMenu.contains(e.relatedTarget)) {
+            this.setState({showMenu: false});
+        }
     }
 
     logout = () => {
@@ -34,31 +34,31 @@ class Account extends React.Component{
                 {({profile}) =>{ 
                     return(
                         <div className="ml-10 relative" onBlur={this.hide}>
-                        <button className="text-gray-700 flex items-center hover:bg-gray-200 px-2 py-1 rounded-lg text-l" onClick={this.handleClick}>
-                            {profile ? <span className="px-4 py-2 text-xl ">{profile.username}</span> : null}
-                            
-                            <i className="fas fa-user-circle fa-2x text-gray-500"></i>
-                            <i className="fas fa-caret-down fa-lg mx-1 text-gray-500"></i>
-                        </button>
-                        {this.state.showMenu &&
-                        <div className="absolute mt-1 right-0 bg-white p-2 rounded-lg text-xl w-full z-30">
-                            <ModalContext.Consumer>{({openModal}) => {
-                                return profile ? (
-                                    <ul> 
-                                        <li><button className="py-2 px-4 hover:bg-gray-100 rounded-lg w-full" onMouseDown={this.logout}>My profile</button></li>
-                                        <li><button className="py-2 px-4 hover:bg-gray-100 rounded-lg w-full" onMouseDown={this.logout}>Logout</button></li>
-                                    </ul> 
-                                ) : (
-                                    <ul>
-                                        <li><button className="py-2 px-4 hover:bg-gray-100 rounded-lg w-full" onMouseDown={() => {openModal("LOGIN")}}>Login</button></li>
-                                        <li><button className="py-2 px-4 hover:bg-gray-100 rounded-lg w-full" onMouseDown={() => {openModal("REGISTER")}}>Register</button></li>
-                                    </ul>
-                                )
-                            }}
-                            </ModalContext.Consumer>
+                            <button className="text-gray-700 flex items-center hover:bg-gray-200 px-2 py-1 rounded-lg text-l" onClick={this.handleClick}>
+                                {profile ? <span className="px-4 py-2 text-xl ">{profile.username}</span> : null}
+                                
+                                <i className="fas fa-user-circle fa-2x text-gray-500"></i>
+                                <i className="fas fa-caret-down fa-lg mx-1 text-gray-500"></i>
+                            </button>
+                            {this.state.showMenu &&
+                            <div className="absolute mt-1 right-0 bg-white p-2 rounded-lg text-xl z-30 w-full min-w-32" ref={(element) => {this.dropdownMenu = element}}>
+                                <ModalContext.Consumer>{({openModal}) => {
+                                    return profile ? (
+                                        <ul> 
+                                            <li><Link to="/profile/" className="py-2 px-4 hover:bg-gray-100 rounded-lg w-full">My profile</Link></li>
+                                            <li><button className="py-2 px-4 hover:bg-gray-100 rounded-lg w-full" onMouseDown={this.logout}>Logout</button></li>
+                                        </ul> 
+                                    ) : (
+                                        <ul>
+                                            <li><button className="py-2 px-4 hover:bg-gray-100 rounded-lg w-full" onMouseDown={() => {openModal("LOGIN")}}>Login</button></li>
+                                            <li><button className="py-2 px-4 hover:bg-gray-100 rounded-lg w-full" onMouseDown={() => {openModal("REGISTER")}}>Register</button></li>
+                                        </ul>
+                                    )
+                                }}
+                                </ModalContext.Consumer>
+                            </div>
+                            }
                         </div>
-                    }
-                    </div>
                     )
                 }}
             </ProfileContext.Consumer>

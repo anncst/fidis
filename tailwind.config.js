@@ -11,7 +11,10 @@ module.exports = {
       },
       lineHeight: {
         '14': '3.5rem',
-       }
+      },
+      minWidth:{
+        '32': '8rem',
+      }
     },
   },
   variants: {
