@@ -24,7 +24,7 @@ class Account extends React.Component{
     logout = () => {
         axios.get('/auth/logout')
         .then(() => {
-            window.location.reload();
+            window.location.href='/'
         })
     }
 
@@ -36,7 +36,6 @@ class Account extends React.Component{
                         <div className="ml-10 relative" onBlur={this.hide}>
                             <button className="text-gray-700 flex items-center hover:bg-gray-200 px-2 py-1 rounded-lg text-l" onClick={this.handleClick}>
                                 {profile ? <span className="px-4 py-2 text-xl ">{profile.username}</span> : null}
-                                
                                 <i className="fas fa-user-circle fa-2x text-gray-500"></i>
                                 <i className="fas fa-caret-down fa-lg mx-1 text-gray-500"></i>
                             </button>

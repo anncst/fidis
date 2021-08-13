@@ -13,11 +13,15 @@ class ProfileContextProvider extends React.Component {
         this.reloadProfile();
       }
     
-      reloadProfile = () => {
-        axios.get('/profile/')
-        .then(res => {
-          this.setState({profile: res.data})
-        })
+      reloadProfile = (profile) => {
+        if(!profile){
+          axios.get('/profile/')
+          .then(res => {
+            this.setState({profile: res.data})
+          })
+        }else{
+          this.setState({profile:profile})
+        }
       }
 
     render(){
