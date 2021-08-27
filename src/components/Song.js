@@ -3,6 +3,7 @@ import reactStringReplace from "react-string-replace";
 import ChordCircle from "./ChordCircle";
 import React from "react";
 import axios from 'axios';
+import {Link} from 'react-router-dom';
 
 class Song extends React.Component{
     state = {
@@ -28,7 +29,8 @@ class Song extends React.Component{
             <div>
                 <div className="relative">
                     <h2 className="text-6xl font-bold mt-12">{this.state.song.title}</h2>
-                    <h3 className="text-xl">By {this.state.song.author.name}</h3>
+                    <Link to={"/author/" + this.state.song.author.name} className="text-xl">By {this.state.song.author.name}</Link>
+                    <h3 className="text-xl">Added by </h3>
                     <div className="absolute top-0 right-0">
                         <FavouriteButton liked = {this.state.song.liked} songId = {this.props.id}/>
                     </div>

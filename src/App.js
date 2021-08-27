@@ -1,5 +1,4 @@
 import './App.css';
-import RecentlyPlayed from './components/RecentlyPlayed';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import Navbar from "./components/Navbar";
 import HomeImg from "./components/HomeImg";
@@ -9,14 +8,13 @@ import Create from "./components/Create";
 import Footer from "./components/Footer";
 import ModalController from "./components/modals/ModalController";
 import ModalContextProvider from './contexts/ModalContext';
-import LoginBox from './components/LoginBox';
 import MyTabs from './components/MyTabs';
 import React from 'react';
 import AuthorPage from './components/AuthorPage';
 import SearchPage from './components/SearchPage';
 import ProfileContextProvider from './contexts/ProfileContext';
 import ProfileAndModalContextProvider from './contexts/ProfileAndModalContext';
-import MyProfile from './components/MyProfile';
+import Profile from './components/Profile';
 
 class App extends React.Component{
 
@@ -49,9 +47,9 @@ class App extends React.Component{
                 <Route path="/author/:name" render={(props) => (
                   <AuthorPage name={props.match.params.name}/>
                 )} />
-                <Route path="/profile/" >
-                  <MyProfile />
-                </Route>
+                <Route path={["/profile/:username", "/profile"]} render={(props) => (
+                  <Profile username={props.match.params.username} />
+                )} />
                 <Route path="/create/">
                   <Create />
                 </Route>

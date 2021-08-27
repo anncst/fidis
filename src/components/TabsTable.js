@@ -20,7 +20,7 @@ function TabsTable ({songs}) {
         )
     })
     return(
-        <table className="bg-white w-3/4 mx-auto text-2xl">
+        <table className="bg-white mx-auto text-2xl w-full">
             <thead>
                 <tr className="bg-primary text-white ">
                     <th>Title</th>

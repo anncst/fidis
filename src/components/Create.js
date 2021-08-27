@@ -55,14 +55,24 @@ class Create extends React.Component {
         })
         return(
             <div>
-                <h1 className="text-4xl text-left mt-10 mb-5">Add song</h1>
                 <div className="flex flex-col items-start">
-                   <InputLabel id="title" text="Title" />
-                   <InputLabel id="artist" text="Artist" />
-                    <label className="text-xl"> Choose chords which you use</label>
-                    <div className="flex mb-10 mt-2">
-                        {chordList}
+                    <div className="flex flex-row justify-between w-full">
+                        <div className="px-4">
+                            <h1 className="text-4xl mt-10 mb-5">Add song</h1>
+                            <InputLabel id="title" text="Title" />
+                            <InputLabel id="artist" text="Artist" />
+                            <div className="py-4">
+                                <label className="text-xl"> Choose chords which you use</label>
+                                <div className="flex mb-10 mt-2">
+                                    {chordList}
+                                </div>
+                            </div> 
+                        </div>
+                        <div className="flex w-1/2">
+                            <img src="img/idea.svg" alt="" className=" w-1/2" />
+                        </div>
                     </div>
+                    
                     <div className="flex justify-center">
                         <div contentEditable onDrop={this.handleDrop.bind(this)} onDragOver={(event) => event.preventDefault()}>fverrfreerfe</div>
                         <div className="ml-6">

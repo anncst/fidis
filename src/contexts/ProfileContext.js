@@ -15,7 +15,7 @@ class ProfileContextProvider extends React.Component {
     
       reloadProfile = (profile) => {
         if(!profile){
-          axios.get('/profile/')
+          axios.get('/myprofile/')
           .then(res => {
             this.setState({profile: res.data})
           })

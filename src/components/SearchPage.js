@@ -17,10 +17,14 @@ class SearchPage extends React.Component {
 
     }
     render() {
-        return( 
-            <TabsTable songs = {this.state.songs}/>
-        )
-        
+        return !this.state.songs.length ? (
+        <div className="flex justify-center flex-col items-center min-h-full mt-24">
+            <img src="img/empty-box.svg" className="w-1/4"/>
+            <h1 className="text-2xl p-4">Nothing found</h1>
+        </div>
+        ) : (
+        <TabsTable songs = {this.state.songs}/>
+        );  
     }
 }
 
